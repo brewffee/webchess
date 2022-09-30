@@ -1,0 +1,181 @@
+/* flex board */
+html {
+    font-family: sans-serif;
+    user-select: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    background-color: #e4e4e4;
+}
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vh;
+    height: 80vh;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+/* column */
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    width: 10%;
+    height: 100%;
+}
+
+    /* chess squares */
+.square {
+    flex: 1 1 0;
+    margin: 0;
+    padding: 0;
+    background: #cacaca;
+    height: 10%;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.square.dark {
+    background: #666;
+}
+
+.square.selected:after /* pseudoclass when selected */ {
+    content: "";
+    position: relative;
+    display: block;
+    z-index: 1;
+    top: -10.1vh;
+    left: 0;
+    width: 10vh;
+    height: 10vh;
+    background: #ffcd8766;
+}
+
+vbox { display: flex; flex-direction: column; }
+hbox { display: flex; flex-direction: row; }
+
+vbox.coords {
+    width: 24px;
+    height: calc(80vh + 24px);
+    background-color: #f0f0f0;
+}
+
+hbox.coords {
+    height: 24px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+vbox.coords > .coord {
+    flex: 1 1 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+hbox.coords > .coord {
+    flex: 1 1 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coord-end {
+    height: 24px;
+    width: 24px;
+    background-color: #ccc;
+}
+
+/* Chess pieces */
+piece {
+    position: relative;
+    display: inline-block;
+    width: 85%;
+    height: 85%;
+    margin: 8%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    z-index: 3 !important;
+}
+
+piece:hover {
+    opacity: 0.5;
+}
+
+piece.pawn.white {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/ffffff/pawn.png');   }
+piece.pawn.black {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/000000/pawn.png');   }
+piece.rook.white {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/ffffff/rook.png');   }
+piece.rook.black {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/000000/rook.png');   }
+piece.knight.white {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/ffffff/knight.png');   }
+piece.knight.black {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/000000/knight.png');   }
+piece.bishop.white {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/ffffff/bishop.png');   }
+piece.bishop.black {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/000000/bishop.png');   }
+piece.queen.white {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/ffffff/queen.png');   }
+piece.queen.black {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/000000/queen.png');    }
+piece.king.white {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/ffffff/king.png');   }
+piece.king.black {    background-image: url('https://img.icons8.com/fluency-systems-filled/128/000000/king.png');   }
+
+/* Available moves (not captures) */
+.available {
+    display: inline-block;
+    width: 32%;
+    height: 32%;
+    margin: 34%;
+
+    background-color: #ffffff66;
+    border-radius: 50%;
+}
+
+/* Available captures */
+.capture {
+    display: block;
+    width: calc(100% - 2vh);
+    height: calc(100% - 2vh);
+    margin: 0;
+
+    border: 1vh solid #ffffff66;
+
+    border-radius: 50%;
+
+    z-index: 1;
+
+    /* always position on top of other pieces */
+    position: relative;
+    top: -10vh;
+}
+
+
